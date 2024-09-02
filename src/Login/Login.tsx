@@ -15,11 +15,9 @@ export const Login = () => {
             <h3 className='mt-3 mb-3 text-center'>Login</h3>
             {
                 config.map((obj) => {
-                    return <Input {...obj} />
+                    return <Input {...obj} hanldeChange={() => { }} />
                 })
             }
-
-
             <div className='row mb-3'>
                 <div className='offset-sm-5 col-sm-7'>
                     <button className='btn btn-primary' onClick={fnLogin}>Login</button>

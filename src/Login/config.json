@@ -5,7 +5,10 @@
         "name": "uid",
         "type": "text",
         "errMsgCols": "4",
+        "isRequired": true,
         "errorMsg": "Enter user id",
+        "hasError": false,
+        "value": "",
         "inputCols": "3"
     },
     {
@@ -15,6 +18,9 @@
         "type": "password",
         "errMsgCols": "4",
         "errorMsg": "Enter password",
+        "isRequired": true,
+        "hasError": false,
+        "value": "",
         "inputCols": "3"
     }
 ]

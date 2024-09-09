@@ -9,7 +9,7 @@ export const Input = ({ hanldeChange, lbl, isRequired, value, name, type, hasErr
             <input onChange={hanldeChange} name={name} type={type} className='form-control' />
         </div>
         <div className={`col-sm-${errMsgCols}`}>
-            {hasError && <b className='text-danger'>{errorMsg}</b>}
+            {errorMsg && <b className='text-danger'>{errorMsg}</b>}
         </div>
     </div>
 

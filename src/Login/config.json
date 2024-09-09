@@ -6,10 +6,14 @@
         "type": "text",
         "errMsgCols": "4",
         "isRequired": true,
-        "errorMsg": "Enter user id",
+        "errorMsg": "",
         "hasError": false,
         "value": "",
-        "inputCols": "3"
+        "inputCols": "3",
+        "criteria": [
+            "REQUIRED",
+            "EMAIL"
+        ]
     },
     {
         "lbl": "Password",
@@ -17,10 +21,14 @@
         "name": "pwd",
         "type": "password",
         "errMsgCols": "4",
-        "errorMsg": "Enter password",
+        "errorMsg": "",
         "isRequired": true,
         "hasError": false,
         "value": "",
-        "inputCols": "3"
+        "inputCols": "3",
+        "criteria": [
+            "REQUIRED",
+            "MIN5CHAR"
+        ]
     }
 ]

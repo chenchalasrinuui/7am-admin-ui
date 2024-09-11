@@ -2,18 +2,25 @@ import { Input } from '@/common/components/Input'
 import { appCtx } from '@/context/appCtx'
 import React, { useContext, useState } from 'react'
 import config from './config.json'
+import axios from 'axios'
 import { handleFieldLevelValidation, handleFormLevelValidation } from '@/common/services/validations'
 export const Login = () => {
     const [inputControls, setInputControls] = useState(config)
     const ctxData = useContext(appCtx)
-    const fnLogin = () => {
-        const [isInValid, dataObj]: any = handleFormLevelValidation(inputControls, setInputControls)
+    const fnLogin = async () => {
+        const [isInValid, data]: any = handleFormLevelValidation(inputControls, setInputControls)
         if (isInValid) return;
-        alert(JSON.stringify(dataObj))
-        // ctxData.dispatch({
-        //     type: "LOGIN",
-        //     payload: true
-        // })
+        const res = await axios.post("http://localhost:2020/auth/login", {
+            data
+        })
+        if (res?.data?.length > 0) {
+            ctxData.dispatch({
+                type: "LOGIN",
+                payload: true
+            })
+        } else {
+            alert("Please check ented uid or pwd")
+        }
     }
     const handleChange = (eve: any) => {
         handleFieldLevelValidation(eve, inputControls, setInputControls)

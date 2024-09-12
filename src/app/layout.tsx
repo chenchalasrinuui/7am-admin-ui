@@ -11,6 +11,7 @@ import { Header } from "@/Header";
 import { Footer } from "@/Footer";
 import { Login } from "@/Login";
 import { Menu } from "@/Menu";
+import { Loader } from "@/common/components/Loader/Loader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({
           <Header />
           {state?.isLoggedIn ? <Menu /> : <Login />}
           <Footer />
+          {state?.isShowLoader && <Loader />}
         </Provider>
       </body>
     </html>

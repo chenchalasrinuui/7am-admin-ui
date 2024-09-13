@@ -18,7 +18,11 @@ export const Login = () => {
             if (res?.data?.length > 0) {
                 updateStoreData(dispatch, 'LOGIN', true)
             } else {
-                alert("Please check ented uid or pwd")
+                updateStoreData(dispatch, 'TOASTER', {
+                    isShowToaster: true,
+                    toasterMsg: 'Check ented uid or pwd',
+                    color: 'red'
+                })
             }
         } catch (ex) {
 

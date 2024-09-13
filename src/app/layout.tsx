@@ -12,6 +12,7 @@ import { Footer } from "@/Footer";
 import { Login } from "@/Login";
 import { Menu } from "@/Menu";
 import { Loader } from "@/common/components/Loader/Loader";
+import { Toaster } from "@/common/components/Toaster/Toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
           {state?.isLoggedIn ? <Menu /> : <Login />}
           <Footer />
           {state?.isShowLoader && <Loader />}
+          {state?.toaster?.isShowToaster && < Toaster />}
         </Provider>
       </body>
     </html>

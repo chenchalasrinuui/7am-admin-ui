@@ -17,6 +17,7 @@ export const Login = () => {
             const res = await Ajax.post("auth/login", { data })
             if (res?.data?.length > 0) {
                 updateStoreData(dispatch, 'LOGIN', true)
+                console.log("login data", res)
             } else {
                 updateStoreData(dispatch, 'TOASTER', {
                     isShowToaster: true,

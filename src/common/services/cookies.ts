@@ -1,7 +1,7 @@
 
 import { getDate, getPrevDate } from "./functions"
 import { getCookiesObj } from "./functions"
-class AppCookies {
+export class AppCookies {
     static setCookie(key: string, value: string, days: number) {
         if (days) {
             document.cookie = `${key}=${value};expires=${getDate(days)}`
@@ -26,6 +26,10 @@ class AppCookies {
         for (const key in cookiesObj) {
             document.cookie = `${key}=;expires=${getPrevDate()}`
         }
+    }
+    static isUserLoggedIn() {
+        const { uid } = getCookiesObj()
+        return uid ? true : false
     }
 }
 

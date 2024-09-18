@@ -16,8 +16,8 @@ export function getPrevDate() {
 export function getCookiesObj() {
     const cookieArr: any = document.cookie?.split(";")
     return cookieArr.reduce((init: any, val: any) => {
-        const [key, value] = val.split('=');
-        init[key.trim()] = value.trim()
+        const [key, value] = val?.split('=') || [];
+        init[key?.trim?.()] = value?.trim?.()
         return init;
     }, {})
 }

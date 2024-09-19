@@ -1,0 +1,22 @@
+<style>
+    div {
+        border: 1px solid red;
+        padding: 40px;
+    }
+</style>
+
+
+<div id="div1">
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</div>
+
+<script>
+    const divs = document.getElementsByTagName('div')
+    for (let i = 0; i < divs.length; i++) {
+        divs[i].addEventListener('click', function () {
+            alert(this.id)
+        }, false)
+    }
+</script>

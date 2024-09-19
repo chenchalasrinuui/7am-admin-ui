@@ -1,0 +1,14 @@
+.menu {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-align: right;
+    background-color: rgb(215, 204, 204);
+    line-height: 30px;
+}
+
+.menu>li {
+    display: inline;
+    margin-right: 20px;
+    letter-spacing: 5px;
+}

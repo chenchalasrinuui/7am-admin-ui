@@ -7,12 +7,11 @@ import { useReducer } from "react";
 import { reducer } from '../redux/reducer'
 import { init } from '../redux/init'
 import { Provider } from '../context/appCtx'
-import { Header } from "@/Header";
-import { Footer } from "@/Footer";
-import { Login } from "@/Login";
-import { Menu } from "@/Menu";
-import { Loader } from "@/common/components/Loader/Loader";
-import { Toaster } from "@/common/components/Toaster/Toaster";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Menu } from "@/components/Menu";
+import { Loader } from "@/components/shared/Loader";
+import { Toaster } from "@/components/shared/Toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +32,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <Provider value={{ state, dispatch }}>
           <Header />
-          {state?.isLoggedIn ? <Menu /> : <Login />}
+          {state?.isLoggedIn && <Menu />}
+          {children}
+          {/* {state?.isLoggedIn ? <Menu /> : <Login />} */}
           <Footer />
           {state?.isShowLoader && <Loader />}
           {state?.toaster?.isShowToaster && < Toaster />}

@@ -1,12 +1,12 @@
-import { Input } from '@/common/components/Input'
+import { Input } from '@/components/shared/Input'
 import { appCtx } from '@/context/appCtx'
 import React, { useContext, useState } from 'react'
 import config from './config.json'
 import axios from 'axios'
-import { handleFieldLevelValidation, handleFormLevelValidation } from '@/common/services/validations'
-import Ajax from '@/common/services/ajax'
-import { updateStoreData } from '@/common/services/functions'
-import { AppCookies } from '@/common/services/cookies'
+import { handleFieldLevelValidation, handleFormLevelValidation } from '@/services/validations'
+import Ajax from '@/services/ajax'
+import { updateStoreData } from '@/services/functions'
+import { AppCookies } from '@/services/cookies'
 export const Login = () => {
     const [inputControls, setInputControls] = useState(config)
     const { dispatch } = useContext(appCtx)

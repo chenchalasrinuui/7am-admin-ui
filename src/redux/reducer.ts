@@ -1,4 +1,4 @@
-export const reducer = (state, action) => {
+export const reducer = (state: any, action: any) => {
     console.log("Prev Stage", state)
     console.log("action", action)
     switch (action.type) {

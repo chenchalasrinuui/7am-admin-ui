@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styles from './Toaster.module.css'
 import { appCtx } from '@/context/appCtx'
-import { updateStoreData } from '@/common/services/functions'
+import { updateStoreData } from '@/services/functions'
 
 export const Toaster = () => {
     const { state, dispatch } = useContext(appCtx)

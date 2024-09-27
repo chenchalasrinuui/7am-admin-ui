@@ -7,5 +7,10 @@ export const init = {
         isShowToaster: false,
         toasterMsg: '',
         color: ''
+    },
+    modal: {
+        isShowModal: false,
+        modalAction: () => { }
     }
+
 }

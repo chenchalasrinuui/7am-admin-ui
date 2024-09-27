@@ -1,0 +1,24 @@
+<script>
+    var timeoutID;
+    var flag = true
+    function getProducts(eve) {
+        if (flag) {
+            fnSendReq(eve)
+            flag = false
+        }
+        clearTimeout(timeoutID)
+        timeoutID = setTimeout(function () {
+            fnSendReq(eve)
+        }, 5000)
+
+    }
+
+    function fnSendReq(eve) {
+        const productName = eve.target.value;
+        console.log(`send AJAX to get products from database with the name of ${productName}`)
+    }
+</script>
+
+<p>
+    Search Product: <input onkeyup="getProducts(event)" />
+</p>

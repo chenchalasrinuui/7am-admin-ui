@@ -17,6 +17,6 @@
     {
         "id": "logout",
         "name": "Logout",
-        "path": "login"
+        "path": "/"
     }
 ]

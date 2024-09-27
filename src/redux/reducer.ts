@@ -14,6 +14,11 @@ export const reducer = (state: any, action: any) => {
                 isShowLoader: action.payload
             }
             break;
+        case 'MODAL':
+            state = {
+                ...state,
+                modal: action.payload
+            }
         case 'TOASTER':
             state = {
                 ...state,

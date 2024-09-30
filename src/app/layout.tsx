@@ -27,7 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [state, dispatch] = useReducer(reducer, init)
-
+  // in the cookie uid there not there
+  // if true
+  // if false navigate to login page 
   return (
     <html lang="en">
       <body className={inter.className}>

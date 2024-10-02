@@ -5,6 +5,7 @@ import Ajax from '@/services/ajax'
 import { updateStoreData } from '@/services/functions'
 import { appCtx } from '@/context/appCtx'
 import { AppForm } from '../shared/AppForm'
+import { VendorForm } from './VendorForm'
 export const Vendors = () => {
     const [showForm, setShowForm] = useState(false)
     const [data, setData] = useState([])
@@ -45,13 +46,7 @@ export const Vendors = () => {
                 tds={['_id', 'uid', 'pwd', 'phone', 'address']}
             />
             {showForm && <AppForm setShowForm={setShowForm}>
-                <div>sss
-
-                </div>
-                <div>
-                    dfdf
-                </div>
-
+                <VendorForm setShowForm={setShowForm} fnGetVendors={fnGetVendors} />
             </AppForm>}
         </div>
     )

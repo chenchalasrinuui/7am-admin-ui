@@ -8,7 +8,9 @@ import { AppForm } from '../shared/AppForm'
 import { VendorForm } from './VendorForm'
 export const Vendors = () => {
     const [showForm, setShowForm] = useState(false)
+    const [isEdit, setIsEdit] = useState(false)
     const [data, setData] = useState([])
+    const [row, setRow] = useState({})
     const { dispatch } = useContext(appCtx)
 
     /**
@@ -33,7 +35,17 @@ export const Vendors = () => {
     }, [])
 
     const fnAddVendor = () => {
+        setRow({});
+        setIsEdit(false)
         setShowForm(true);
+    }
+    const fnEdit = (row: any) => {
+        setRow(row);
+        setIsEdit(true)
+        setShowForm(true)
+    }
+    const fnDelete = () => {
+        alert('del')
     }
     return (
         <div>
@@ -44,9 +56,11 @@ export const Vendors = () => {
                 ths={["ID", "UID", "Password", "Phone", "Address"]}
                 data={data}
                 tds={['_id', 'uid', 'pwd', 'phone', 'address']}
+                handleEdit={fnEdit}
+                handleDelete={fnDelete}
             />
             {showForm && <AppForm setShowForm={setShowForm}>
-                <VendorForm setShowForm={setShowForm} fnGetVendors={fnGetVendors} />
+                <VendorForm setShowForm={setShowForm} fnGetVendors={fnGetVendors} row={row} isEdit={isEdit} />
             </AppForm>}
         </div>
     )

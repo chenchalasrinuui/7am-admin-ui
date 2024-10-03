@@ -1,14 +1,18 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import config from './config.json'
 import { Input } from '../shared/Input'
 import { TextArea } from '../shared/TextArea'
-import { handleFieldLevelValidation, handleFormLevelValidation } from '@/services/validations'
+import { handleFieldLevelValidation, handleFormLevelValidation, setFormData } from '@/services/validations'
 import Ajax from '@/services/ajax'
 import { updateStoreData } from '@/services/functions'
 import { appCtx } from '@/context/appCtx'
-export const VendorForm = ({ setShowForm, fnGetVendors }: any) => {
+export const VendorForm = ({ setShowForm, fnGetVendors, row, isEdit }: any) => {
     const [inputControls, setInputControls] = useState(config)
     const { dispatch } = useContext(appCtx)
+
+    useEffect(() => {
+        setFormData(inputControls, setInputControls, row, isEdit, "uid")
+    }, [row])
     const handleChange = (eve: any) => {
         handleFieldLevelValidation(eve, inputControls, setInputControls)
     }
@@ -39,6 +43,36 @@ export const VendorForm = ({ setShowForm, fnGetVendors }: any) => {
             updateStoreData(dispatch, "LOADER", false)
         }
     }
+
+    const fnUpdate = async () => {
+        try {
+            const [isInValid, data]: any = handleFormLevelValidation(inputControls, setInputControls)
+            if (isInValid) return;
+            updateStoreData(dispatch, "LOADER", true)
+            console.log(11, data)
+            const res = await Ajax.put(`vendor/update?id=${row._id}`, { data })
+            const { acknowledged, modifiedCount } = res?.data
+            if (acknowledged && modifiedCount) {
+                setShowForm(false)
+                fnGetVendors();
+                updateStoreData(dispatch, 'TOASTER', {
+                    isShowToaster: true,
+                    toasterMsg: 'Updated !!!',
+                    color: 'green'
+                })
+            }
+        } catch (ex) {
+            console.error("VendorForm", ex)
+            updateStoreData(dispatch, 'TOASTER', {
+                isShowToaster: true,
+                toasterMsg: 'Not Updated !!!',
+                color: 'red'
+            })
+        } finally {
+            updateStoreData(dispatch, "LOADER", false)
+        }
+    }
+
     return (
         <div className='container-fluid mt-5'>
             {
@@ -55,7 +89,8 @@ export const VendorForm = ({ setShowForm, fnGetVendors }: any) => {
                 })
             }
             <div>
-                <button onClick={fnSubmit} className='btn btn-primary form-control'>Submit</button>
+                {isEdit ? <button onClick={fnUpdate} className='btn btn-primary form-control'>Update</button> : <button onClick={fnSubmit} className='btn btn-primary form-control'>Submit</button>
+                }
             </div>
         </div>
     )

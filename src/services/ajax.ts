@@ -9,8 +9,8 @@ class Ajax {
         return axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}${url}`, data)
     }
 
-    static put() {
-
+    static put(url: any, data: any) {
+        return axios.put(`${process.env.NEXT_PUBLIC_BASE_URL}${url}`, data)
     }
     static patch() {
 

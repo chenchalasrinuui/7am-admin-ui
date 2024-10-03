@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './AppTable.module.css'
 import { Pagination } from './Pagination'
-export const AppTable = ({ ths, data, tds }: any) => {
+export const AppTable = ({ ths, data, tds, handleEdit, handleDelete }: any) => {
     const perPage = 5;
     const [currPage, setCurrPage] = React.useState(1)
     const [currData, setCurrData] = useState([])
@@ -36,10 +36,10 @@ export const AppTable = ({ ths, data, tds }: any) => {
                                         })
                                     }
                                     <th>
-                                        <button>Edit</button>
+                                        <button onClick={() => handleEdit(obj)}>Edit</button>
                                     </th>
                                     <th>
-                                        <button>Delete</button>
+                                        <button onClick={() => handleDelete(obj)}>Delete</button>
                                     </th>
                                 </tr>
                             })
